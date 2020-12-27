@@ -1,4 +1,5 @@
 import React from "react";
+import LazyLoad from "react-lazyload";
 import data from "./data";
 
 const Post = ({ id, title, body }) => (
@@ -15,7 +16,9 @@ const  App = () => (
     <h2>LazyLoad Demo</h2>
     <div className="post-container">
       {data.map(post => (
-        <Post key={post.id} {...post} />
+        <LazyLoad height={200} placeholder={<div className="loading">Loading...</div>}>
+          <Post key={post.id} {...post} />
+        </LazyLoad>
       ))}
     </div>  
   </div>
